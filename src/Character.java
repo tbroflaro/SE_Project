@@ -1,9 +1,14 @@
+import java.util.ArrayList;
+
 /**
  * Created by Draven on 12/11/2015.
  */
 public class Character {
     private String cName;
     private String pName;
+    private String race;
+    private String cClass;
+    private String lvl;
     private Integer str;
     private Integer con;
     private Integer dex;
@@ -12,8 +17,8 @@ public class Character {
     private Integer inte;
     private Integer classID;
     private Integer raceID;
-    private Integer inventoryID;
-    private Integer spellBookID;
+    private ArrayList inventoryID;
+    private ArrayList spellBookID;
     private Integer abilityScoreID;
 
     public Character() {
@@ -59,6 +64,10 @@ public class Character {
         this.raceID = raceID;
     }
 
+    public void setLvl(String lvl) {
+        this.lvl = lvl;
+    }
+
     public void setInventoryID(Integer inventoryID) {
         this.inventoryID = inventoryID;
     }
@@ -69,6 +78,22 @@ public class Character {
 
     public void setAbilityScoreID(Integer abilityScoreID) {
         this.abilityScoreID = abilityScoreID;
+    }
+
+    public void setRace(String race) {
+        this.race = race;
+    }
+
+    public void setcClass(String cClass) {
+        this.cClass = cClass;
+    }
+
+    public String getcClass() {
+        return cClass;
+    }
+
+    public String getRace() {
+        return race;
     }
 
     public String getCName() {
@@ -105,6 +130,10 @@ public class Character {
         return inte;
     }
 
+    public int getCha() {
+        return cha;
+    }
+
     public int getClassID()
     {
         return classID;
@@ -128,5 +157,9 @@ public class Character {
     public int getAbilityScoreID()
     {
         return abilityScoreID;
+    }
+
+    public String getLvl() {
+        return lvl;
     }
 }

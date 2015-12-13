@@ -6,9 +6,9 @@ import java.sql.*;
 public class AbilityScoreDAO {
 
     private int id;
-
-    private final String JDBC_DRIVE = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private final String DB_URL = "jdbc:sqlserver://localhost:1433;" + "databaseName=DUNGEONS_AND_DRAGONS;";
+    private final String DB_URL = "jdbc:sqlserver://localhost:50396;" + "databaseName=DUNGEON_AND_DRAGONS;";
+    private final String USER = "sa";
+    private final String PASSWORD = "Yhlnjlk1";
 
     public AbilityScoreDAO() {
     }
@@ -18,23 +18,24 @@ public class AbilityScoreDAO {
         Connection conn = null;
         Statement stmt = null;
         String sql = null;
+        ResultSet rs;
 
         try{
-            Class.forName(JDBC_DRIVE);
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-            conn = DriverManager.getConnection(DB_URL);
+            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
 
             stmt = conn.createStatement();
-            sql = "select * from Race";
-            ResultSet rs = stmt.executeQuery(sql);
+            sql = "INSERT INTO ABILITY_SCORE (STRENGTH, DEXTERITY, CONSITUTION, INTELLIGENCE, WISDOM, CHARISMA) OUTPUT inserted.ID VALUES (" + str + ", " + dex + ", " + con + ", " + inte + ", " + wis + ", " + cha + ")";
 
-            while(rs.next()){
-                int id = rs.getInt("ID");
+            rs = stmt.executeQuery(sql);
 
-                System.out.println(id + " this is a test");
-                System.out.println("It went through");
+
+            while (rs.next()) {
+                id = rs.getInt("ID");
             }
-            rs.close();
+
+
             stmt.close();
             conn.close();
 
