@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Created by Draven on 12/11/2015.
  */
@@ -6,7 +8,7 @@ public class Character {
     private String pName;
     private String race;
     private String cClass;
-    private int lvl = 1;
+    private String lvl = "1";
     private Integer str;
     private Integer con;
     private Integer dex;
@@ -15,8 +17,8 @@ public class Character {
     private Integer inte;
     private Integer classID;
     private Integer raceID;
-    private Integer inventoryID;
-    private Integer spellBookID;
+    private ArrayList inventoryID;
+    private ArrayList spellBookID;
     private Integer abilityScoreID;
 
     public Character() {
@@ -62,7 +64,7 @@ public class Character {
         this.raceID = raceID;
     }
 
-    public void setLvl(Integer lvl) {
+    public void setLvl(String lvl) {
         this.lvl = lvl;
     }
 
@@ -157,7 +159,7 @@ public class Character {
         return abilityScoreID;
     }
 
-    public int getLvl() {
+    public String getLvl() {
         return lvl;
     }
 }

@@ -24,6 +24,8 @@ public class FronteEnd {
     private JLabel lblRace;
     private JLabel lblClass;
     private JComboBox comBoxClass;
+    private JComboBox comBoxRace;
+    private JComboBox comboBox;
     private JLabel lblLvl;
     private JTable tableStats;
 
@@ -140,7 +142,8 @@ public class FronteEnd {
                 character.setpName(txtPlayerName.getText());
                 character.setRace(comBoxRace.getSelectedItem().toString());
                 character.setcClass(comBoxClass.getSelectedItem().toString());
-                character.setStr(charStr);
+                character.setLvl(comboBox.getSelectedItem().toString());
+                character.setStr((Integer) tableStats.getModel().getValueAt(1, 1));
                 character.setDex(charDex);
                 character.setCon(charCon);
                 character.setInte(charInt);

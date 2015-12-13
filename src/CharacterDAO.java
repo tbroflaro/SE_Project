@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.*;
 /**
  * Created by Draven on 12/11/2015.
@@ -7,6 +11,8 @@ public class CharacterDAO {
     private AbilityScoreDAO acDAO = new AbilityScoreDAO();
     private ClassDAO cDAO = new ClassDAO();
     private RaceDAO rDAO = new RaceDAO();
+
+    private PrintWriter writer = null;
 
     private int id;
 
@@ -66,6 +72,22 @@ public class CharacterDAO {
             }
         }
 
+    }
+
+    public void exportToFile(Character character) throws IOException {
+        writer = new PrintWriter("character.txt");
+        writer.print("Character name: " + character.getCName());
+        writer.println("Player name: " + character.getPName());
+        writer.println("Class: " + character.getClass());
+        writer.println("Race: " + character.getRace());
+        writer.println("Attributes: \n\tStrength: " + character.getStr());
+        writer.println("\tDexterity: " + character.getDex());
+        writer.println("\tConsitution: " + character.getCon());
+        writer.println("\tIntelligence: " + character.getInte());
+        writer.println("\tWisdom: " + character.getWis());
+        writer.println("\tCharisma: " + character.getCha());
+
+        writer.close();
     }
 
     public int getID()
