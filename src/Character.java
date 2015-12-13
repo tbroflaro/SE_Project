@@ -4,6 +4,8 @@
 public class Character {
     private String cName;
     private String pName;
+    private String race;
+    private String cClass;
     private Integer str;
     private Integer con;
     private Integer dex;
@@ -71,6 +73,22 @@ public class Character {
         this.abilityScoreID = abilityScoreID;
     }
 
+    public void setRace(String race) {
+        this.race = race;
+    }
+
+    public void setcClass(String cClass) {
+        this.cClass = cClass;
+    }
+
+    public String getcClass() {
+        return cClass;
+    }
+
+    public String getRace() {
+        return race;
+    }
+
     public String getCName() {
         return cName;
     }
@@ -103,6 +121,10 @@ public class Character {
     public int getInte()
     {
         return inte;
+    }
+
+    public int getCha() {
+        return cha;
     }
 
     public int getClassID()
