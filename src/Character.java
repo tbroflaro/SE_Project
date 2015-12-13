@@ -68,11 +68,11 @@ public class Character {
         this.lvl = lvl;
     }
 
-    public void setInventoryID(Integer inventoryID) {
+    public void setInventoryID(ArrayList inventoryID) {
         this.inventoryID = inventoryID;
     }
 
-    public void setSpellBookID(Integer spellBookID) {
+    public void setSpellBookID(ArrayList spellBookID) {
         this.spellBookID = spellBookID;
     }
 
@@ -144,12 +144,12 @@ public class Character {
         return raceID;
     }
 
-    public int getInvetoryID()
+    public ArrayList getInvetoryID()
     {
         return inventoryID;
     }
 
-    public int getSpellBookID()
+    public ArrayList getSpellBookID()
     {
         return spellBookID;
     }
