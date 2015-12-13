@@ -25,11 +25,10 @@ public class FronteEnd {
     private JLabel lblClass;
     private JComboBox comBoxClass;
     private JLabel lblLvl;
-    private JTextField txtLvl;
     private JTable tableStats;
-    private JTable tableMods;
 
     private Character character = new Character();
+    private CharacterDAO cDAO = new CharacterDAO();
 
     private int charStr = 10;
     private int charDex = 10;
@@ -38,12 +37,12 @@ public class FronteEnd {
     private int charWis = 10;
     private int charCha = 10;
 
-    private int charStrMod = (charStr - 10) / 2;
-    private int charDexMod = (charDex - 10) / 2;
-    private int charConMod = (charCon - 10) / 2;
-    private int charIntMod = (charInt - 10) / 2;
-    private int charWisMod = (charWis - 10) / 2;
-    private int charChaMod = (charCha - 10) / 2;
+    private int charStrMod = (int) Math.floor((charStr - 10) / 2);
+    private int charDexMod = (int) Math.floor((charDex - 10) / 2);
+    private int charConMod = (int) Math.floor((charCon - 10) / 2);
+    private int charIntMod = (int) Math.floor((charInt - 10) / 2);
+    private int charWisMod = (int) Math.floor((charWis - 10) / 2);
+    private int charChaMod = (int) Math.floor((charCha - 10) / 2);
 
     /**
      * Launch the application.
@@ -99,51 +98,25 @@ public class FronteEnd {
 
         lblLvl = new JLabel("Level: ");
 
-        txtLvl = new JTextField();
-        txtLvl.setColumns(10);
-
         tableStats = new JTable();
         tableStats.setCellSelectionEnabled(true);
         tableStats.setBorder(new LineBorder(new Color(0, 0, 0)));
         tableStats.setModel(new DefaultTableModel(
                 new Object[][]{
-                        {"Str", charStr},
-                        {"Dex", charDex},
-                        {"Con", charCon},
-                        {"Int", charInt},
-                        {"Wis", charWis},
-                        {"Cha", charCha},
+                        {"Stat", "Number", "Modifier"},
+                        {"Str", charStr, charStrMod},
+                        {"Dex", charDex, charDexMod},
+                        {"Con", charCon, charConMod},
+                        {"Int", charInt, charIntMod},
+                        {"Wis", charWis, charWisMod},
+                        {"Cha", charCha, charChaMod},
                 },
                 new String[]{
-                        "Stat", "Number"
+                        "Stat", "Number", "Modifier"
                 }
         ) {
             Class[] columnTypes = new Class[]{
-                    String.class, Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return columnTypes[columnIndex];
-            }
-        });
-
-        tableMods = new JTable();
-        tableMods.setBorder(new LineBorder(new Color(0, 0, 0)));
-        tableMods.setModel(new DefaultTableModel(
-                new Object[][]{
-                        {"Str", charStrMod},
-                        {"Dex", charDexMod},
-                        {"Con", charConMod},
-                        {"Int", charIntMod},
-                        {"Wis", charWisMod},
-                        {"Cha", charChaMod},
-                },
-                new String[]{
-                        "Stat", "Modifer"
-                }
-        ) {
-            Class[] columnTypes = new Class[]{
-                    String.class, Object.class
+                    String.class, Object.class, Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -165,6 +138,8 @@ public class FronteEnd {
 
                 character.setcName(textField.getText());
                 character.setpName(txtPlayerName.getText());
+                character.setRace(comBoxRace.getSelectedItem().toString());
+                character.setcClass(comBoxClass.getSelectedItem().toString());
                 character.setStr(charStr);
                 character.setDex(charDex);
                 character.setCon(charCon);
@@ -172,17 +147,20 @@ public class FronteEnd {
                 character.setWis(charWis);
                 character.setCha(charCha);
 
-
+                cDAO.writeCharacterToDatabase(character);
             }
         });
+
+        JComboBox comboBox = new JComboBox();
+        comboBox.setModel(new DefaultComboBoxModel(new String[]{"Select Level", "1", "2", "3", "4", "5"}));
         GroupLayout groupLayout = new GroupLayout(frmDdeCharacter.getContentPane());
         groupLayout.setHorizontalGroup(
                 groupLayout.createParallelGroup(Alignment.LEADING)
                         .addGroup(groupLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+                                .addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
                                         .addGroup(groupLayout.createSequentialGroup()
-                                                .addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+                                                .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
                                                         .addGroup(groupLayout.createSequentialGroup()
                                                                 .addComponent(lblPlayerName)
                                                                 .addPreferredGap(ComponentPlacement.RELATED)
@@ -194,7 +172,7 @@ public class FronteEnd {
                                                         .addGroup(groupLayout.createSequentialGroup()
                                                                 .addComponent(lblLvl)
                                                                 .addPreferredGap(ComponentPlacement.RELATED)
-                                                                .addComponent(txtLvl))
+                                                                .addComponent(comboBox, 0, 277, Short.MAX_VALUE))
                                                         .addGroup(groupLayout.createSequentialGroup()
                                                                 .addComponent(lblClass)
                                                                 .addPreferredGap(ComponentPlacement.RELATED)
@@ -202,13 +180,11 @@ public class FronteEnd {
                                                         .addGroup(groupLayout.createSequentialGroup()
                                                                 .addComponent(lblRace)
                                                                 .addPreferredGap(ComponentPlacement.RELATED)
-                                                                .addComponent(comBoxRace, GroupLayout.PREFERRED_SIZE, 240, GroupLayout.PREFERRED_SIZE)))
-                                                .addContainerGap(150, Short.MAX_VALUE))
+                                                                .addComponent(comBoxRace, 0, 278, Short.MAX_VALUE)))
+                                                .addGap(111))
                                         .addGroup(groupLayout.createSequentialGroup()
-                                                .addComponent(tableStats, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(tableStats, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                                                 .addGap(18)
-                                                .addComponent(tableMods, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                                                 .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
                                                         .addComponent(btnExportExistingCharacter)
                                                         .addComponent(btnSubmitCharacter))
@@ -236,16 +212,15 @@ public class FronteEnd {
                                 .addPreferredGap(ComponentPlacement.RELATED)
                                 .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
                                         .addComponent(lblLvl)
-                                        .addComponent(txtLvl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addGap(19)
                                 .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
                                         .addComponent(tableStats, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tableMods, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addGroup(groupLayout.createSequentialGroup()
                                                 .addComponent(btnExportExistingCharacter)
                                                 .addGap(14)
                                                 .addComponent(btnSubmitCharacter)))
-                                .addContainerGap(58, Short.MAX_VALUE))
+                                .addContainerGap(42, Short.MAX_VALUE))
         );
         frmDdeCharacter.getContentPane().setLayout(groupLayout);
     }

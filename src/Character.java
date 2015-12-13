@@ -6,6 +6,7 @@ public class Character {
     private String pName;
     private String race;
     private String cClass;
+    private int lvl = 1;
     private Integer str;
     private Integer con;
     private Integer dex;
@@ -59,6 +60,10 @@ public class Character {
 
     public void setRaceID(Integer raceID) {
         this.raceID = raceID;
+    }
+
+    public void setLvl(Integer lvl) {
+        this.lvl = lvl;
     }
 
     public void setInventoryID(Integer inventoryID) {
@@ -150,5 +155,9 @@ public class Character {
     public int getAbilityScoreID()
     {
         return abilityScoreID;
+    }
+
+    public int getLvl() {
+        return lvl;
     }
 }
