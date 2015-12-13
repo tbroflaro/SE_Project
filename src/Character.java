@@ -8,7 +8,7 @@ public class Character {
     private String pName;
     private String race;
     private String cClass;
-    private String lvl = "1";
+    private String lvl;
     private Integer str;
     private Integer con;
     private Integer dex;
