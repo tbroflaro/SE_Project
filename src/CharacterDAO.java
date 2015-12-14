@@ -224,6 +224,7 @@ public class CharacterDAO {
         writer.close();
     }
 
+    public void exportToFile(String id){ };
     public int getID()
     {
         return id;
