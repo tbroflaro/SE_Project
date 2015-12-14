@@ -13,7 +13,7 @@ public class AbilityScoreDAO {
     public AbilityScoreDAO() {
     }
 
-    public void writeAbilityScores(int str, int dex, int con, int wis, int inte, int cha, String raceID)
+    public void writeAbilityScores(int str, int dex, int con, int wis, int inte, int cha, int raceID)
     {
         Connection conn = null;
         Statement stmt = null;

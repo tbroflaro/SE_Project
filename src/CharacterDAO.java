@@ -38,7 +38,10 @@ public class CharacterDAO {
 
     public void writeCharacterToDatabase()
     {
-        acDAO.writeAbilityScores(character.getStr(), character.getDex(), character.getCon(), character.getInte(), character.getWis(), character.getCha());
+        rDAO.setID(character.getRace());
+        character.setRaceID(rDAO.getID());
+
+        acDAO.writeAbilityScores(character.getStr(), character.getDex(), character.getCon(), character.getInte(), character.getWis(), character.getCha(), character.getRaceID());
         character.setAbilityScoreID(acDAO.getID());
 
         sbDAO.setSpellBook(character.getcClass());
@@ -52,9 +55,6 @@ public class CharacterDAO {
 
         cDAO.setID(character.getcClass());
         character.setClassID(cDAO.getID());
-
-        rDAO.setID(character.getRace());
-        character.setRaceID(rDAO.getID());
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
