@@ -1,3 +1,5 @@
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.*;
 
 /**
@@ -12,8 +14,47 @@ public class SpellDAO {
     public SpellDAO() {
     }
 
-    public String getSpellDescription(String spellName)
+    public String getSpellName(String id)
     {
-        return "";
+        String name = null;
+
+        Connection conn = null;
+        Statement stmt = null;
+        String sql = null;
+        ResultSet rs;
+
+        try{
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+
+            stmt = conn.createStatement();
+
+            sql = "SELECT NAME FROM SPELL WHERE ID = "+id;
+            rs = stmt.executeQuery(sql);
+
+
+            while (rs.next()) {
+               name = rs.getString("NAME");
+            }
+
+
+            stmt.close();
+            conn.close();
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally{
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return name;
     }
 }
