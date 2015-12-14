@@ -10,15 +10,16 @@ public class RaceDAO {
     private final String USER = "sa";
     private final String PASSWORD = "Yhlnjlk1";
 
+    private Connection conn = null;
+    private Statement stmt = null;
+    private String sql = null;
+    private ResultSet rs;
+
     public RaceDAO() {
     }
 
     public void setID(String raceName)
     {
-        Connection conn = null;
-        Statement stmt = null;
-        String sql = null;
-        ResultSet rs;
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -51,6 +52,44 @@ public class RaceDAO {
                 e.printStackTrace();
             }
         }
+    }
+
+    public String getFeats(int id)
+    {
+        String feats = "";
+
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+
+            stmt = conn.createStatement();
+            sql = "SELECT FEATS FROM FEAT WHERE ID = "+id;
+            rs = stmt.executeQuery(sql);
+
+
+            while (rs.next()) {
+                feats += rs.getString("FEATS");
+            }
+
+
+            stmt.close();
+            conn.close();
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return feats;
     }
 
     public int getID()

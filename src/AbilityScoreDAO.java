@@ -13,12 +13,106 @@ public class AbilityScoreDAO {
     public AbilityScoreDAO() {
     }
 
-    public void writeAbilityScores(int str, int dex, int con, int wis, int inte, int cha)
+    public void writeAbilityScores(int str, int dex, int con, int wis, int inte, int cha, int raceID)
     {
         Connection conn = null;
         Statement stmt = null;
         String sql = null;
         ResultSet rs;
+        try{
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+
+            stmt = conn.createStatement();
+            sql = "SELECT ABILITY_SCORE_1, ABILITY_SCORE_2, ABILITY_SCORE_INCREASE_1, ABILITY_SCORE_INCREASE_2 FROM RACE WHERE ID = " + raceID;
+
+            rs = stmt.executeQuery(sql);
+
+
+            while (rs.next()) {
+                switch(rs.getString("ABILITY_SCORE_1"))
+                {
+                    case "CON":
+                        con += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_1"));
+                        break;
+                    case "STR":
+                        str += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_1"));
+                        break;
+                    case "DEX":
+                        dex += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_1"));
+                        break;
+                    case "INT":
+                        inte += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_1"));
+                        break;
+                    case "WIS":
+                        wis += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_1"));
+                        break;
+                    case "CHA":
+                        cha += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_1"));
+                        break;
+                    case "ALL":
+                        con += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_1"));
+                        str += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_1"));
+                        dex += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_1"));
+                        inte += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_1"));
+                        wis += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_1"));
+                        cha += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_1"));
+                        break;
+                    default:
+                        break;
+                }
+
+                switch(rs.getString("ABILITY_SCORE_2"))
+                {
+                    case "CON":
+                        con += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_2"));
+                        break;
+                    case "STR":
+                        str += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_2"));
+                        break;
+                    case "DEX":
+                        dex += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_2"));
+                        break;
+                    case "INT":
+                        inte += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_2"));
+                        break;
+                    case "WIS":
+                        wis += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_2"));
+                        break;
+                    case "CHA":
+                        cha += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_2"));
+                        break;
+                    case "ALL":
+                        con += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_2"));
+                        str += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_2"));
+                        dex += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_2"));
+                        inte += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_2"));
+                        wis += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_2"));
+                        cha += Integer.parseInt(rs.getString("ABLITY_=SCORE_INCREASE_2"));
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+
+            stmt.close();
+            conn.close();
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally{
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
