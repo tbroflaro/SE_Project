@@ -98,7 +98,7 @@ public class CharacterDAO {
         writer.println("Player name: " + character.getPName());
         writer.println("Class: " + character.getClass());
         writer.println("Race: " + character.getRace());
-        writer.println("Attributes: \n\tStrength: " + character.getStr());
+        writer.println("Attributes: " + character.getStr());
         writer.println("\tDexterity: " + character.getDex());
         writer.println("\tConsitution: " + character.getCon());
         writer.println("\tIntelligence: " + character.getInte());
