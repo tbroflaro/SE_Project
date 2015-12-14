@@ -11,6 +11,8 @@ public class CharacterDAO {
     private AbilityScoreDAO acDAO = new AbilityScoreDAO();
     private ClassDAO cDAO = new ClassDAO();
     private RaceDAO rDAO = new RaceDAO();
+    private InventoryDAO iDAO = new InventoryDAO();
+    private SpellBookDAO sbDAO = new SpellBookDAO();
 
     private PrintWriter writer = null;
 
@@ -33,6 +35,15 @@ public class CharacterDAO {
 
         acDAO.writeAbilityScores(character.getStr(), character.getDex(), character.getCon(), character.getInte(), character.getWis(), character.getCha());
         character.setAbilityScoreID(acDAO.getID());
+
+        sbDAO.setSpellBook(character.getcClass());
+        if (sbDAO.getID().size() < 3)
+            character.setSpellBookID(null);
+        else
+            character.setSpellBookID(sbDAO.getID());
+
+        iDAO.setInventory(character.getcClass());
+        character.setInventoryID(iDAO.getID());
 
         cDAO.setID(character.getcClass());
         character.setClassID(cDAO.getID());
@@ -86,6 +97,7 @@ public class CharacterDAO {
         writer.println("\tIntelligence: " + character.getInte());
         writer.println("\tWisdom: " + character.getWis());
         writer.println("\tCharisma: " + character.getCha());
+
 
         writer.close();
     }
