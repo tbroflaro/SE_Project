@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+import java.util.ArrayList;
+
 /**
  * Created by Draven on 12/11/2015.
  */
@@ -11,26 +13,31 @@ public class CharacterDAO {
     private RaceDAO rDAO = new RaceDAO();
     private InventoryDAO iDAO = new InventoryDAO();
     private SpellBookDAO sbDAO = new SpellBookDAO();
+    private ItemDAO itemDAO = new ItemDAO();
+    private SpellDAO spellDAO = new SpellDAO();
 
     private PrintWriter writer = null;
+    private Character character = null;
 
     private int id;
+    private String prof = "";
 
     private final String DB_URL = "jdbc:sqlserver://localhost:50396;" + "databaseName=DUNGEON_AND_DRAGONS;";
     private final String USER = "sa";
     private final String PASSWORD = "Yhlnjlk1";
 
-    public CharacterDAO()
+    private Connection conn = null;
+    private Statement stmt = null;
+    private String sql = null;
+    private ResultSet rs;
+
+    public CharacterDAO(Character character)
     {
+        this.character = character;
     }
 
-    public void writeCharacterToDatabase(Character character)
+    public void writeCharacterToDatabase()
     {
-        Connection conn = null;
-        Statement stmt = null;
-        String sql = null;
-        ResultSet rs;
-
         acDAO.writeAbilityScores(character.getStr(), character.getDex(), character.getCon(), character.getInte(), character.getWis(), character.getCha());
         character.setAbilityScoreID(acDAO.getID());
 
@@ -83,7 +90,9 @@ public class CharacterDAO {
 
     }
 
-    public void exportToFile(Character character) throws IOException {
+    public void exportToFile() throws IOException {
+
+
         writer = new PrintWriter("character.txt");
         writer.print("Character name: " + character.getCName());
         writer.println("Player name: " + character.getPName());
@@ -96,6 +105,121 @@ public class CharacterDAO {
         writer.println("\tWisdom: " + character.getWis());
         writer.println("\tCharisma: " + character.getCha());
 
+        writer.println("Proficiencies: " + cDAO.getProf(character.getClassID()));
+        writer.println("Feats: " + rDAO.getFeats(character.getRaceID()));
+        writer.println("Inventory: ");
+        ArrayList items = character.getInvetoryID();
+
+        for (int x = 0; x < items.size(); x ++)
+        {
+            writer.println("\t "+ itemDAO.getItemName((int)items.get(x)));
+        }
+
+        writer.println("Spell List: ");
+        switch (character.getcClass().toLowerCase())
+        {
+            case "bard":
+                if (character.getLvl().equals(1)) {
+                    writer.println("\t" + spellDAO.getSpellName("1"));
+                    writer.println("\t" + spellDAO.getSpellName("2"));
+                    writer.println("\t" + spellDAO.getSpellName("4"));
+                    writer.println("\t" + spellDAO.getSpellName("5"));
+                }
+                else if(character.getLvl().equals(2))
+                {
+                    writer.println("\t" + spellDAO.getSpellName("1"));
+                    writer.println("\t" + spellDAO.getSpellName("2"));
+                    writer.println("\t" + spellDAO.getSpellName("4"));
+                    writer.println("\t" + spellDAO.getSpellName("5"));
+                    writer.println("\t" + spellDAO.getSpellName("5"));
+                }
+                else if(character.getLvl().equals(3))
+                    break;
+                else if(character.getLvl().equals(4))
+                    break;
+                else
+                    break;
+            case "cleric":
+                if (character.getLvl().equals(1))
+                    break;
+                else if(character.getLvl().equals(2))
+                    break;
+                else if(character.getLvl().equals(3))
+                    break;
+                else if(character.getLvl().equals(4))
+                    break;
+                else
+                    break;
+            case "druid":
+                if (character.getLvl().equals(1))
+                    break;
+                else if(character.getLvl().equals(2))
+                    break;
+                else if(character.getLvl().equals(3))
+                    break;
+                else if(character.getLvl().equals(4))
+                    break;
+                else
+                    break;
+            case "paladin":
+                if (character.getLvl().equals(1))
+                    break;
+                else if(character.getLvl().equals(2))
+                    break;
+                else if(character.getLvl().equals(3))
+                    break;
+                else if(character.getLvl().equals(4))
+                    break;
+                else
+                    break;
+            case "ranger":
+                if (character.getLvl().equals(1))
+                    break;
+                else if(character.getLvl().equals(2))
+                    break;
+                else if(character.getLvl().equals(3))
+                    break;
+                else if(character.getLvl().equals(4))
+                    break;
+                else
+                    break;
+            case "sorcerer":
+                if (character.getLvl().equals(1))
+                    break;
+                else if(character.getLvl().equals(2))
+                    break;
+                else if(character.getLvl().equals(3))
+                    break;
+                else if(character.getLvl().equals(4))
+                    break;
+                else
+                    break;
+            case "warlock":
+                if (character.getLvl().equals(1))
+                    break;
+                else if(character.getLvl().equals(2))
+                    break;
+                else if(character.getLvl().equals(3))
+                    break;
+                else if(character.getLvl().equals(4))
+                    break;
+                else
+                    break;
+            case "wizard":
+                if (character.getLvl().equals(1))
+                    break;
+                else if(character.getLvl().equals(2))
+                    break;
+                else if(character.getLvl().equals(3))
+                    break;
+                else if(character.getLvl().equals(4))
+                    break;
+                else
+                    break;
+            default:
+                writer.println("N/A");
+                break;
+        }
 
         writer.close();
     }
@@ -104,4 +228,6 @@ public class CharacterDAO {
     {
         return id;
     }
+
+
 }

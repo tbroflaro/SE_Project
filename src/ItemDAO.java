@@ -15,7 +15,7 @@ public class ItemDAO {
     public ItemDAO() {
     }
 
-    public String getItemName(String id)
+    public String getItemName(int id)
     {
         String name = null;
 

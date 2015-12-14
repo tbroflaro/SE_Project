@@ -9,15 +9,17 @@ public class ClassDAO {
     private final String USER = "sa";
     private final String PASSWORD = "Yhlnjlk1";
 
+    private Connection conn = null;
+    private Statement stmt = null;
+    private String sql = null;
+    private ResultSet rs;
+
     public ClassDAO() {
     }
 
     public void setID(String className)
     {
-        Connection conn = null;
-        Statement stmt = null;
-        String sql = null;
-        ResultSet rs;
+
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -51,6 +53,45 @@ public class ClassDAO {
             }
         }
     }
+
+    public String getProf(int id)
+    {
+        String prof = "";
+
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+
+            stmt = conn.createStatement();
+            sql = "SELECT PROFICIENCIES FROM CLASS WHERE ID = "+id;
+            rs = stmt.executeQuery(sql);
+
+
+            while (rs.next()) {
+                prof += rs.getString("PROFICIENCIES");
+            }
+
+
+            stmt.close();
+            conn.close();
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return prof;
+    }
+
 
     public int getID()
     {
