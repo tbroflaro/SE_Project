@@ -61,6 +61,10 @@ public class ExportCharacter extends JDialog {
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
             {
                 JButton okButton = new JButton("OK");
+                okButton.addActionListner(new ActionListner(){
+                    int id = (int) txtCharacterID.text;
+                    exportExistingToFile(id);
+                })
                 okButton.setActionCommand("OK");
                 buttonPane.add(okButton);
                 getRootPane().setDefaultButton(okButton);

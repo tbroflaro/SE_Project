@@ -90,6 +90,45 @@ public class CharacterDAO {
         writer.close();
     }
 
+    public void exportExistingToFile(int id) throws SQLException{
+        //This query might need to be changed
+        String query = "SELECT * FROM character WHERE characterID=" + id;
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        Character character = null;
+
+        try{
+            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            if (rs.next()){
+                //Needs the table names for the rs statements
+                character = new Character();
+                character.setcName(rs.getString());
+                character.setpName(rs.getString());
+                character.setStr(rs.getInt());
+                character.setCon(rs.getInt());
+                character.setDex(rs.getInt());
+                character.setWis(rs.getInt());
+                character.setCha(rs.getInt());
+                character.setInte(rs.getInt());
+                character.setClassID(rs.getInt());
+                character.setRaceID(rs.getInt());
+                character.setLvl(rs.getString());
+                character.setInventoryID(rs.getInt());
+                character.setSpellBookID(rs.getInt());
+                character.setAbilityScoreID(rs.getInt());
+                character.setRace(rs.getString());
+                character.setcClass(rs.getString());
+            }
+            exportToFile(character);
+        } finally {
+            stmt.close();
+            conn.close();
+        }
+    }
+
     public int getID()
     {
         return id;
