@@ -106,6 +106,87 @@ public class CharacterDAO {
         writer.println("\tCharisma: " + character.getCha());
 
         writer.println("Proficiencies: " + cDAO.getProf(character.getClassID()));
+        switch(character.getcClass().toLowerCase())
+        {
+            case "barbarian":
+                    writer.println("\t\tPath of the Berserker: ");
+                    writer.println("\t\t\t3: Frenxy");
+                break;
+            case "bard":
+                writer.println("\t\tCollege of Valor:");
+                writer.println("\t\t\t3: New Proficiencies:");
+                writer.println("\t\t\t\tARMOR: MEDIUM, SHIELDS/WEAPONS: MARTIAL");
+                writer.println("\t\t3: Combat Inspiration");
+                break;
+            case "cleric":
+                writer.println("\t\tLife Domain:");
+                writer.println("\t\t\tNew Spells:");
+                writer.println("\t\t\t\t3: LESSER RESTORATION, SPIRITUAL WEAPON");
+                if (character.getLvl().equals("5"))
+                    writer.println("\t\t\t\t5: BEACON OF HOPE, REVIVFY");
+                writer.println("\t\t\tNew Proficiencies:");
+                writer.println("\t\t\t\tARMOR: HEAVY");
+                writer.println("\t\t\tDisciple of Life");
+                writer.println("\t\t\tChannel Divinity: Preserve LIfe");
+                break;
+            case "druid":
+                writer.println("\t\tCircle of the Land:");
+                writer.println("\t\t\tNew Spells:");
+                writer.println("\t\t\t\tBonus Cantrip");
+                writer.println("\t\t\t2: Natural Recovery");
+                writer.println("\t\t\t: Circle Spells: Mountain");
+                writer.println("\t\t\t\t3: SPIDER CLIMB, SPIKE GROWTH");
+                if (character.getLvl().equals("5"))
+                    writer.println("\t\t\t\t5: LIGHTNING BOLT, MELD INTO STONE");
+                break;
+            case "fighter":
+                writer.println("\t\tChampion:");
+                writer.println("\t\t\tImproved Critical");
+                break;
+            case "monk":
+                writer.println("\t\tWay of the Open Hand:");
+                writer.println("\t\t\tOpen Hand Techniques");
+                break;
+            case "paladin":
+                writer.println("\t\tOath of the Ancients:");
+                writer.println("\t\t\tNew Spells:");
+                writer.println("\t\t\t\t3: ENSNARING STRIKE, SPEAK WITH ANIMALS");
+                if (character.getLvl().equals("5"))
+                    writer.println("\t\t\t\t5: MOONBEAM, MISTY STEP");
+                writer.println("\t\t\tChannel Divinity: Nature's Wrath");
+                break;
+            case "ranger":
+                writer.println("\t\tHunter:");
+                writer.println("\t\t\tHunter's Prey:");
+                writer.println("\t\t\t\tHorde Breaker");
+                break;
+            case "rogue":
+                writer.println("\t\tAssassin:");
+                writer.println("\t\t\t New Proficiencies:");
+                writer.println("\t\t\t\tTOOLS: DISGUISE KIT, POISONER'S KIT");
+                writer.println("\t\t\t3: Assassinate");
+                break;
+            case "sorcerer":
+                writer.println("\t\tWild Magic:");
+                writer.println("\t\t\tWild Magic Surge");
+                writer.println("\t\t\tTides of Chaos");
+                break;
+            case "warlock":
+                writer.println("\t\tFiend with Pact of the Tomb:");
+                writer.println("\t\t\tNew Spells:");
+                writer.println("\t\t\t\t1: BURNING HANDS, COMMAND");
+                writer.println("\t\t\t\t2: BLINDNESS/DEAFNESS, SCORCHING RAY");
+                writer.println("\t\t\t\t3: FIREBALL, STINKING CLOUD");
+                writer.println("\t\t\t\t4: FIRE SHIELD, WALL OF FIRE");
+                writer.println("\t\t\t\t5: FLAME STRIKE, HALLOW");
+                writer.println("\t\t\tDark One's Blessing");
+                break;
+            case "Wizard":
+                writer.println("\t\tSchool of Evocation:");
+                writer.println("\t\t\t2: Evocation Savant");
+                writer.println("\t\t\t2: Sculpt Spells");
+                break;
+        }
         writer.println("Feats: " + rDAO.getFeats(character.getRaceID()));
         writer.println("Inventory: ");
         ArrayList items = character.getInvetoryID();
@@ -131,91 +212,379 @@ public class CharacterDAO {
                     writer.println("\t" + spellDAO.getSpellName("2"));
                     writer.println("\t" + spellDAO.getSpellName("4"));
                     writer.println("\t" + spellDAO.getSpellName("5"));
-                    writer.println("\t" + spellDAO.getSpellName("5"));
+                    writer.println("\t" + spellDAO.getSpellName("6"));
                 }
                 else if(character.getLvl().equals(3))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("1"));
+                    writer.println("\t" + spellDAO.getSpellName("2"));
+                    writer.println("\t" + spellDAO.getSpellName("4"));
+                    writer.println("\t" + spellDAO.getSpellName("5"));
+                    writer.println("\t" + spellDAO.getSpellName("6"));
+                    writer.println("\t" + spellDAO.getSpellName("9"));
+                }
                 else if(character.getLvl().equals(4))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("1"));
+                    writer.println("\t" + spellDAO.getSpellName("2"));
+                    writer.println("\t" + spellDAO.getSpellName("3"));
+                    writer.println("\t" + spellDAO.getSpellName("4"));
+                    writer.println("\t" + spellDAO.getSpellName("5"));
+                    writer.println("\t" + spellDAO.getSpellName("6"));
+                    writer.println("\t" + spellDAO.getSpellName("9"));
+                }
                 else
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("1"));
+                    writer.println("\t" + spellDAO.getSpellName("2"));
+                    writer.println("\t" + spellDAO.getSpellName("3"));
+                    writer.println("\t" + spellDAO.getSpellName("4"));
+                    writer.println("\t" + spellDAO.getSpellName("5"));
+                    writer.println("\t" + spellDAO.getSpellName("6"));
+                    writer.println("\t" + spellDAO.getSpellName("9"));
+                    writer.println("\t" + spellDAO.getSpellName("10"));
+                }
+                break;
             case "cleric":
-                if (character.getLvl().equals(1))
-                    break;
+                if (character.getLvl().equals(1)) {
+                    writer.println("\t" + spellDAO.getSpellName("12"));
+                    writer.println("\t" + spellDAO.getSpellName("13"));
+                    writer.println("\t" + spellDAO.getSpellName("14"));
+                    writer.println("\t" + spellDAO.getSpellName("16"));
+                    writer.println("\t" + spellDAO.getSpellName("17"));
+                }
                 else if(character.getLvl().equals(2))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("12"));
+                    writer.println("\t" + spellDAO.getSpellName("13"));
+                    writer.println("\t" + spellDAO.getSpellName("14"));
+                    writer.println("\t" + spellDAO.getSpellName("16"));
+                    writer.println("\t" + spellDAO.getSpellName("17"));
+                    writer.println("\t" + spellDAO.getSpellName("18"));
+                }
                 else if(character.getLvl().equals(3))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("12"));
+                    writer.println("\t" + spellDAO.getSpellName("13"));
+                    writer.println("\t" + spellDAO.getSpellName("14"));
+                    writer.println("\t" + spellDAO.getSpellName("16"));
+                    writer.println("\t" + spellDAO.getSpellName("17"));
+                    writer.println("\t" + spellDAO.getSpellName("18"));
+                    writer.println("\t" + spellDAO.getSpellName("19"));
+                    writer.println("\t" + spellDAO.getSpellName("20"));
+                    writer.println("\t" + spellDAO.getSpellName("21"));
+                }
                 else if(character.getLvl().equals(4))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("12"));
+                    writer.println("\t" + spellDAO.getSpellName("13"));
+                    writer.println("\t" + spellDAO.getSpellName("14"));
+                    writer.println("\t" + spellDAO.getSpellName("15"));
+                    writer.println("\t" + spellDAO.getSpellName("16"));
+                    writer.println("\t" + spellDAO.getSpellName("17"));
+                    writer.println("\t" + spellDAO.getSpellName("18"));
+                    writer.println("\t" + spellDAO.getSpellName("19"));
+                    writer.println("\t" + spellDAO.getSpellName("20"));
+                    writer.println("\t" + spellDAO.getSpellName("21"));
+                    writer.println("\t" + spellDAO.getSpellName("22"));
+                }
                 else
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("12"));
+                    writer.println("\t" + spellDAO.getSpellName("13"));
+                    writer.println("\t" + spellDAO.getSpellName("14"));
+                    writer.println("\t" + spellDAO.getSpellName("15"));
+                    writer.println("\t" + spellDAO.getSpellName("16"));
+                    writer.println("\t" + spellDAO.getSpellName("17"));
+                    writer.println("\t" + spellDAO.getSpellName("18"));
+                    writer.println("\t" + spellDAO.getSpellName("19"));
+                    writer.println("\t" + spellDAO.getSpellName("20"));
+                    writer.println("\t" + spellDAO.getSpellName("21"));
+                    writer.println("\t" + spellDAO.getSpellName("22"));
+                    writer.println("\t" + spellDAO.getSpellName("23"));
+                    writer.println("\t" + spellDAO.getSpellName("24"));
+                }
+                break;
             case "druid":
-                if (character.getLvl().equals(1))
-                    break;
+                if (character.getLvl().equals(1)) {
+                    writer.println("\t" + spellDAO.getSpellName("25"));
+                    writer.println("\t" + spellDAO.getSpellName("26"));
+                    writer.println("\t" + spellDAO.getSpellName("28"));
+                    writer.println("\t" + spellDAO.getSpellName("29"));
+                }
                 else if(character.getLvl().equals(2))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("25"));
+                    writer.println("\t" + spellDAO.getSpellName("26"));
+                    writer.println("\t" + spellDAO.getSpellName("28"));
+                    writer.println("\t" + spellDAO.getSpellName("29"));
+                    writer.println("\t" + spellDAO.getSpellName("30"));
+                }
                 else if(character.getLvl().equals(3))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("25"));
+                    writer.println("\t" + spellDAO.getSpellName("26"));
+                    writer.println("\t" + spellDAO.getSpellName("28"));
+                    writer.println("\t" + spellDAO.getSpellName("29"));
+                    writer.println("\t" + spellDAO.getSpellName("30"));
+                    writer.println("\t" + spellDAO.getSpellName("31"));
+                    writer.println("\t" + spellDAO.getSpellName("32"));
+                    writer.println("\t" + spellDAO.getSpellName("33"));
+                }
                 else if(character.getLvl().equals(4))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("25"));
+                    writer.println("\t" + spellDAO.getSpellName("26"));
+                    writer.println("\t" + spellDAO.getSpellName("27"));
+                    writer.println("\t" + spellDAO.getSpellName("28"));
+                    writer.println("\t" + spellDAO.getSpellName("29"));
+                    writer.println("\t" + spellDAO.getSpellName("30"));
+                    writer.println("\t" + spellDAO.getSpellName("31"));
+                    writer.println("\t" + spellDAO.getSpellName("32"));
+                    writer.println("\t" + spellDAO.getSpellName("33"));
+                    writer.println("\t" + spellDAO.getSpellName("34"));
+                }
                 else
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("25"));
+                    writer.println("\t" + spellDAO.getSpellName("26"));
+                    writer.println("\t" + spellDAO.getSpellName("27"));
+                    writer.println("\t" + spellDAO.getSpellName("28"));
+                    writer.println("\t" + spellDAO.getSpellName("29"));
+                    writer.println("\t" + spellDAO.getSpellName("30"));
+                    writer.println("\t" + spellDAO.getSpellName("31"));
+                    writer.println("\t" + spellDAO.getSpellName("32"));
+                    writer.println("\t" + spellDAO.getSpellName("33"));
+                    writer.println("\t" + spellDAO.getSpellName("34"));
+                    writer.println("\t" + spellDAO.getSpellName("35"));
+                    writer.println("\t" + spellDAO.getSpellName("36"));
+                }
+                break;
             case "paladin":
-                if (character.getLvl().equals(1))
-                    break;
+                if (character.getLvl().equals(1)) {
+                    writer.println("\t N/A");
+                }
                 else if(character.getLvl().equals(2))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("37"));
+                    writer.println("\t" + spellDAO.getSpellName("38"));
+                }
                 else if(character.getLvl().equals(3))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("37"));
+                    writer.println("\t" + spellDAO.getSpellName("38"));
+                    writer.println("\t" + spellDAO.getSpellName("39"));
+                }
                 else if(character.getLvl().equals(4))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("37"));
+                    writer.println("\t" + spellDAO.getSpellName("38"));
+                    writer.println("\t" + spellDAO.getSpellName("39"));
+                }
                 else
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("37"));
+                    writer.println("\t" + spellDAO.getSpellName("38"));
+                    writer.println("\t" + spellDAO.getSpellName("39"));
+                    writer.println("\t" + spellDAO.getSpellName("40"));
+                    writer.println("\t" + spellDAO.getSpellName("41"));
+                    writer.println("\t" + spellDAO.getSpellName("42"));
+                }
+                break;
             case "ranger":
-                if (character.getLvl().equals(1))
-                    break;
+                if (character.getLvl().equals(1)) {
+                    writer.println("\t N/A");
+                }
                 else if(character.getLvl().equals(2))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("43"));
+                    writer.println("\t" + spellDAO.getSpellName("44"));
+                }
                 else if(character.getLvl().equals(3))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("43"));
+                    writer.println("\t" + spellDAO.getSpellName("44"));
+                    writer.println("\t" + spellDAO.getSpellName("45"));
+                }
                 else if(character.getLvl().equals(4))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("43"));
+                    writer.println("\t" + spellDAO.getSpellName("44"));
+                    writer.println("\t" + spellDAO.getSpellName("45"));
+                }
                 else
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("43"));
+                    writer.println("\t" + spellDAO.getSpellName("44"));
+                    writer.println("\t" + spellDAO.getSpellName("45"));
+                    writer.println("\t" + spellDAO.getSpellName("46"));
+                }
+                break;
             case "sorcerer":
-                if (character.getLvl().equals(1))
-                    break;
+                if (character.getLvl().equals(1)) {
+                    writer.println("\t" + spellDAO.getSpellName("47"));
+                    writer.println("\t" + spellDAO.getSpellName("48"));
+                    writer.println("\t" + spellDAO.getSpellName("49"));
+                    writer.println("\t" + spellDAO.getSpellName("50"));
+                    writer.println("\t" + spellDAO.getSpellName("52"));
+                    writer.println("\t" + spellDAO.getSpellName("53"));
+                }
                 else if(character.getLvl().equals(2))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("47"));
+                    writer.println("\t" + spellDAO.getSpellName("48"));
+                    writer.println("\t" + spellDAO.getSpellName("49"));
+                    writer.println("\t" + spellDAO.getSpellName("50"));
+                    writer.println("\t" + spellDAO.getSpellName("52"));
+                    writer.println("\t" + spellDAO.getSpellName("53"));
+                    writer.println("\t" + spellDAO.getSpellName("54"));
+
+                }
                 else if(character.getLvl().equals(3))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("47"));
+                    writer.println("\t" + spellDAO.getSpellName("48"));
+                    writer.println("\t" + spellDAO.getSpellName("49"));
+                    writer.println("\t" + spellDAO.getSpellName("50"));
+                    writer.println("\t" + spellDAO.getSpellName("52"));
+                    writer.println("\t" + spellDAO.getSpellName("53"));
+                    writer.println("\t" + spellDAO.getSpellName("54"));
+                    writer.println("\t" + spellDAO.getSpellName("55"));
+                }
                 else if(character.getLvl().equals(4))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("47"));
+                    writer.println("\t" + spellDAO.getSpellName("48"));
+                    writer.println("\t" + spellDAO.getSpellName("49"));
+                    writer.println("\t" + spellDAO.getSpellName("50"));
+                    writer.println("\t" + spellDAO.getSpellName("52"));
+                    writer.println("\t" + spellDAO.getSpellName("53"));
+                    writer.println("\t" + spellDAO.getSpellName("54"));
+                    writer.println("\t" + spellDAO.getSpellName("55"));
+                    writer.println("\t" + spellDAO.getSpellName("56"));
+                }
                 else
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("47"));
+                    writer.println("\t" + spellDAO.getSpellName("48"));
+                    writer.println("\t" + spellDAO.getSpellName("49"));
+                    writer.println("\t" + spellDAO.getSpellName("50"));
+                    writer.println("\t" + spellDAO.getSpellName("52"));
+                    writer.println("\t" + spellDAO.getSpellName("53"));
+                    writer.println("\t" + spellDAO.getSpellName("54"));
+                    writer.println("\t" + spellDAO.getSpellName("55"));
+                    writer.println("\t" + spellDAO.getSpellName("56"));
+                    writer.println("\t" + spellDAO.getSpellName("58"));
+                }
+                break;
             case "warlock":
-                if (character.getLvl().equals(1))
-                    break;
+                if (character.getLvl().equals(1)) {
+                    writer.println("\t" + spellDAO.getSpellName("59"));
+                    writer.println("\t" + spellDAO.getSpellName("60"));
+                    writer.println("\t" + spellDAO.getSpellName("62"));
+                    writer.println("\t" + spellDAO.getSpellName("63"));
+                }
                 else if(character.getLvl().equals(2))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("59"));
+                    writer.println("\t" + spellDAO.getSpellName("60"));
+                    writer.println("\t" + spellDAO.getSpellName("62"));
+                    writer.println("\t" + spellDAO.getSpellName("63"));
+                    writer.println("\t" + spellDAO.getSpellName("64"));
+                }
                 else if(character.getLvl().equals(3))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("59"));
+                    writer.println("\t" + spellDAO.getSpellName("60"));
+                    writer.println("\t" + spellDAO.getSpellName("62"));
+                    writer.println("\t" + spellDAO.getSpellName("63"));
+                    writer.println("\t" + spellDAO.getSpellName("64"));
+                    writer.println("\t" + spellDAO.getSpellName("65"));
+                }
                 else if(character.getLvl().equals(4))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("59"));
+                    writer.println("\t" + spellDAO.getSpellName("60"));
+                    writer.println("\t" + spellDAO.getSpellName("61"));
+                    writer.println("\t" + spellDAO.getSpellName("62"));
+                    writer.println("\t" + spellDAO.getSpellName("63"));
+                    writer.println("\t" + spellDAO.getSpellName("64"));
+                    writer.println("\t" + spellDAO.getSpellName("65"));
+                    writer.println("\t" + spellDAO.getSpellName("66"));
+                }
                 else
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("59"));
+                    writer.println("\t" + spellDAO.getSpellName("60"));
+                    writer.println("\t" + spellDAO.getSpellName("61"));
+                    writer.println("\t" + spellDAO.getSpellName("62"));
+                    writer.println("\t" + spellDAO.getSpellName("63"));
+                    writer.println("\t" + spellDAO.getSpellName("64"));
+                    writer.println("\t" + spellDAO.getSpellName("65"));
+                    writer.println("\t" + spellDAO.getSpellName("66"));
+                    writer.println("\t" + spellDAO.getSpellName("67"));
+                }
+                break;
             case "wizard":
-                if (character.getLvl().equals(1))
-                    break;
+                if (character.getLvl().equals(1)) {
+                    writer.println("\t" + spellDAO.getSpellName("69"));
+                    writer.println("\t" + spellDAO.getSpellName("70"));
+                    writer.println("\t" + spellDAO.getSpellName("71"));
+                    writer.println("\t" + spellDAO.getSpellName("73"));
+                    writer.println("\t" + spellDAO.getSpellName("74"));
+                }
                 else if(character.getLvl().equals(2))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("69"));
+                    writer.println("\t" + spellDAO.getSpellName("70"));
+                    writer.println("\t" + spellDAO.getSpellName("71"));
+                    writer.println("\t" + spellDAO.getSpellName("73"));
+                    writer.println("\t" + spellDAO.getSpellName("74"));
+                    writer.println("\t" + spellDAO.getSpellName("75"));
+                }
                 else if(character.getLvl().equals(3))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("69"));
+                    writer.println("\t" + spellDAO.getSpellName("70"));
+                    writer.println("\t" + spellDAO.getSpellName("71"));
+                    writer.println("\t" + spellDAO.getSpellName("73"));
+                    writer.println("\t" + spellDAO.getSpellName("74"));
+                    writer.println("\t" + spellDAO.getSpellName("75"));
+                    writer.println("\t" + spellDAO.getSpellName("76"));
+                    writer.println("\t" + spellDAO.getSpellName("77"));
+                    writer.println("\t" + spellDAO.getSpellName("78"));
+                }
                 else if(character.getLvl().equals(4))
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("69"));
+                    writer.println("\t" + spellDAO.getSpellName("70"));
+                    writer.println("\t" + spellDAO.getSpellName("71"));
+                    writer.println("\t" + spellDAO.getSpellName("72"));
+                    writer.println("\t" + spellDAO.getSpellName("73"));
+                    writer.println("\t" + spellDAO.getSpellName("74"));
+                    writer.println("\t" + spellDAO.getSpellName("75"));
+                    writer.println("\t" + spellDAO.getSpellName("76"));
+                    writer.println("\t" + spellDAO.getSpellName("77"));
+                    writer.println("\t" + spellDAO.getSpellName("78"));
+                    writer.println("\t" + spellDAO.getSpellName("79"));
+                }
                 else
-                    break;
+                {
+                    writer.println("\t" + spellDAO.getSpellName("69"));
+                    writer.println("\t" + spellDAO.getSpellName("70"));
+                    writer.println("\t" + spellDAO.getSpellName("71"));
+                    writer.println("\t" + spellDAO.getSpellName("72"));
+                    writer.println("\t" + spellDAO.getSpellName("73"));
+                    writer.println("\t" + spellDAO.getSpellName("74"));
+                    writer.println("\t" + spellDAO.getSpellName("75"));
+                    writer.println("\t" + spellDAO.getSpellName("76"));
+                    writer.println("\t" + spellDAO.getSpellName("77"));
+                    writer.println("\t" + spellDAO.getSpellName("78"));
+                    writer.println("\t" + spellDAO.getSpellName("79"));
+                    writer.println("\t" + spellDAO.getSpellName("80"));
+                    writer.println("\t" + spellDAO.getSpellName("81"));
+                }
+                break;
             default:
                 writer.println("N/A");
                 break;
