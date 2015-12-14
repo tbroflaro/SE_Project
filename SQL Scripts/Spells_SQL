@@ -1,66 +1,66 @@
 INSERT INTO SPELL (NAME, SPELL_LVL)
 
-VALUES ('ACID SPLASH', '0')
-VALUES ('ALARM', '1')
-VALUES ('ALTER SELFL', '2')
-VALUES ('ANIMATE DEAD', '3')
-VALUES ('ARCANE LOCK', '2')
-VALUES ('BLADE WAND', '0')
-VALUES ('BLINDNESS/DEAFNESS', '2')
-VALUES ('BLINK', '3')
-VALUES ('BLUE', '2')
-VALUES ('BURNING HANDS', '1')
-VALUES ('CHARM PERSON', '1')
-VALUES ('CHILL TOUCH', '0')
-VALUES ('CHROMATIC ORB', '1')
-VALUES ('CLAIRVOYANCE', '3')
-VALUES ('CLOUD OF DAGGERS', '2')
-VALUES ('CONTINUAL FLAME', '2')
-VALUES ('COUNTERSPELL', '3')
-VALUES ('DANCING LIGHTS', '0')
-VALUES ('DETECT MAGIC', '1')
-VALUES ('DISPEL MAGIC', '3')
-VALUES ('ENLARGE/REDUCE', '2')
-VALUES ('EXPEDITIOUS RETREAT', '1')
-VALUES ('FEAR', '3')
-VALUES ('FEATHER FALL', '1')
-VALUES ('FEIGN DEATH', '3')
-VALUES ('FIRE BOLT', '0')
-VALUES ('FIREBALL', '3')
-VALUES ('FLAMING SPHERE', '2')
-VALUES ('FLY', '3')
-VALUES ('FOG CLOUD', '1')
-VALUES ('FRIENDS', '0')
-VALUES ('GASEOUS FORM', '3')
-VALUES ('GREASE', '1')
-VALUES ('HASTE', '3')
-VALUES ('HOLD PERSON', '2')
-VALUES ('ILLUSIONARY SCRIPT', '1')
-VALUES ('INVISBILITY', '2')
-VALUES ('JUMP', '1')
-VALUES ('KNOCK', '2')
-VALUES ('LEVITATE', '2')
-VALUES ('LIGHT', '0')
-VALUES ('LIGHTNING BOLT', '3')
-VALUES ('LOCATE OBJECT', '2')
-VALUES ('LONGSTRIDER', '1')
-VALUES ('MAGE ARMOR', '1')
-VALUES ('MAGE HAND', '0')
-VALUES ('MAGIC MISSILE', '1')
-VALUES ('MENDING', '0')
-VALUES ('MESSAGE', '0')
-VALUES ('MINOR ILLUSION', '0')
-VALUES ('MIRROR IMAGE', '2')
-VALUES ('MISTY STEP', '2')
-VALUES ('POISON SPRAY', '0')
-VALUES ('PRESTIDIGITATION', '0')
-VALUES ('RAY OF FROST', '0')
-VALUES ('ROPE TRICK', '2')
-VALUES ('SEE INVISIBILITY', '2')
-VALUES ('SHATTER', '2')
-VALUES ('SHOCKING GRASP', '0')
-VALUES ('SCORCHING RAY', '2')
-VALUES ('SPIDER CLIMB', '2')
-VALUES ('SUGGESTION', '2')
-VALUES ('TRUE STRIKE', '0')
-VALUES ('WEB', '2')
+VALUES ('ACID SPLASH', '0'),
+       ('ALARM', '1'),
+       ('ALTER SELFL', '2'),
+       ('ANIMATE DEAD', '3'),
+       ('ARCANE LOCK', '2'),
+       ('BLADE WAND', '0'),
+       ('BLINDNESS/DEAFNESS', '2'),
+       ('BLINK', '3'),
+       ('BLUR', '2'),
+       ('BURNING HANDS', '1'),
+       ('CHARM PERSON', '1'),
+       ('CHILL TOUCH', '0'),
+       ('CHROMATIC ORB', '1'),
+       ('CLAIRVOYANCE', '3'),
+       ('CLOUD OF DAGGERS', '2'),
+       ('CONTINUAL FLAME', '2'),
+       ('COUNTERSPELL', '3'),
+       ('DANCING LIGHTS', '0'),
+       ('DETECT MAGIC', '1'),
+       ('DISPEL MAGIC', '3'),
+       ('ENLARGE/REDUCE', '2'),
+       ('EXPEDITIOUS RETREAT', '1'),
+       ('FEAR', '3'),
+       ('FEATHER FALL', '1'),
+       ('FEIGN DEATH', '3'),
+       ('FIRE BOLT', '0'),
+       ('FIREBALL', '3'),
+       ('FLAMING SPHERE', '2'),
+       ('FLY', '3'),
+       ('FOG CLOUD', '1'),
+       ('FRIENDS', '0'),
+       ('GASEOUS FORM', '3'),
+       ('GREASE', '1'),
+       ('HASTE', '3'),
+       ('HOLD PERSON', '2'),
+       ('ILLUSIONARY SCRIPT', '1'),
+       ('INVISBILITY', '2'),
+       ('JUMP', '1'),
+       ('KNOCK', '2'),
+       ('LEVITATE', '2'),
+       ('LIGHT', '0'),
+       ('LIGHTNING BOLT', '3'),
+       ('LOCATE OBJECT', '2'),
+       ('LONGSTRIDER', '1'),
+       ('MAGE ARMOR', '1'),
+       ('MAGE HAND', '0'),
+       ('MAGIC MISSILE', '1'),
+       ('MENDING', '0'),
+       ('MESSAGE', '0'),
+       ('MINOR ILLUSION', '0'),
+       ('MIRROR IMAGE', '2'),
+       ('MISTY STEP', '2'),
+       ('POISON SPRAY', '0'),
+       ('PRESTIDIGITATION', '0'),
+       ('RAY OF FROST', '0'),
+       ('ROPE TRICK', '2'),
+       ('SEE INVISIBILITY', '2'),
+       ('SHATTER', '2'),
+       ('SHOCKING GRASP', '0'),
+       ('SCORCHING RAY', '2'),
+       ('SPIDER CLIMB', '2'),
+       ('SUGGESTION', '2'),
+       ('TRUE STRIKE', '0'),
+       ('WEB', '2')
